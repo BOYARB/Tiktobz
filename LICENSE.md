@@ -1,5 +1,5 @@
 All rights reserved Copyright (c)
-2025 <BOYARB> You may not copy, 
+2025 "BOYARB" You may not copy, 
 modify, distribute or use this 
 software for commercial or non-
 commercial purposes without the 
