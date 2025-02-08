@@ -5,10 +5,10 @@ from colorama import init, Fore, Style
 import signal
 import sys
 
-# Initialize colorama
+
 init(autoreset=True)
 
-# Print a stylish header
+
 print(Fore.YELLOW + r"""
  _______ _ _    _        _
 |__   __(_) |  | |      | |
@@ -21,36 +21,36 @@ print(Fore.YELLOW + r"""
 print(Fore.CYAN + "Find a rare name on TikTok🫰️")
 print(Fore.MAGENTA + "Made by BOYARB❤️ \n")
 
-# Function to check if a username exists
+
 def check_username(session, username):
-    # Remove @ if it exists
+    
     username = username.lstrip('@')
     
     url = f"https://www.tiktok.com/@{username}"
     
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-        "Connection": "keep-alive",  # Keep connection open for faster future requests
+        "Connection": "keep-alive",  
     }
 
     try:
-        response = session.get(url, headers=headers, timeout=5)  # 5 seconds timeout for fast failure
-        if response.status_code == 200:  # Username exists
+        response = session.get(url, headers=headers, timeout=5)  
+        if response.status_code == 200:  
             return True
-        elif response.status_code == 404:  # Username does not exist
+        elif response.status_code == 404:  
             return False
         else:
-            return None  # Other HTTP statuses
+            return None  
     except requests.exceptions.RequestException as e:
         print(Fore.RED + f"Error while checking username: {e}")
-        return None  # Handle network errors
+        return None  
 
-# Function to generate a random username of 3 or 4 characters with upper, lower, and digits
+
 def generate_username(length):
-    characters = string.ascii_lowercase + string.ascii_uppercase + string.digits  # Including uppercase, lowercase, and digits
+    characters = string.ascii_lowercase + string.ascii_uppercase + string.digits  
     return ''.join(random.choices(characters, k=length))
 
-# Handle Ctrl+Z press to stop the program
+
 def signal_handler(sig, frame):
     print()  # Add a blank line before "Stopped"
     print("\033[97mStopped")  # Display "Stopped" in white
