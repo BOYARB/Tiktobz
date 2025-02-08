@@ -9,16 +9,16 @@ import sys
 init(autoreset=True)
 
 # Print a stylish header
-print(Fore.YELLOW + """
- _______ _ _    _        _        
-|__   __(_) |  | |      | |       
+print(Fore.YELLOW + r"""
+ _______ _ _    _        _
+|__   __(_) |  | |      | |
    | |   _| | _| |_ ___ | |__ ____
    | |  | | |/ / __/ _ \| '_ \_  /
-   | |  | |   <| || (_) | |_) / / 
-   |_|  |_|_|\_\\__\___/|_.__/___|
+   | |  | |   <| || (_) | |_) / /
+   |_|  |_|_|\_\__\___/|_.__/___|
                                     
 """)
-print(Fore.CYAN + "Find a rare name on TikTok🫰️  ")
+print(Fore.CYAN + "Find a rare name on TikTok🫰️")
 print(Fore.MAGENTA + "Made by BOYARB❤️ \n")
 
 # Function to check if a username exists
@@ -99,4 +99,3 @@ def main():
 
 if __name__ == "__main__":
     main() 
-    
