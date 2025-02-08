@@ -5,9 +5,7 @@ from colorama import init, Fore, Style
 import signal
 import sys
 
-
 init(autoreset=True)
-
 
 print(Fore.YELLOW + r"""
  _______ _ _    _        _
@@ -21,11 +19,8 @@ print(Fore.YELLOW + r"""
 print(Fore.CYAN + "Find a rare name on TikTok🫰️")
 print(Fore.MAGENTA + "Made by BOYARB❤️ \n")
 
-
 def check_username(session, username):
-    
     username = username.lstrip('@')
-    
     url = f"https://www.tiktok.com/@{username}"
     
     headers = {
@@ -45,21 +40,18 @@ def check_username(session, username):
         print(Fore.RED + f"Error while checking username: {e}")
         return None  
 
-
 def generate_username(length):
-    characters = string.ascii_lowercase + string.ascii_uppercase + string.digits  
-    return ''.join(random.choices(characters, k=length))
-
+    
+    characters = string.ascii_lowercase + string.ascii_uppercase + string.digits + "._"
+    return ''.join(random.choices(characters, k=length))  
 
 def signal_handler(sig, frame):
     print()  
     print("\033[97mStopped")  
     sys.exit(0)
 
-
 def exit_handler(sig, frame):
     sys.exit(0)  
-
 
 signal.signal(signal.SIGTSTP, signal_handler)  
 signal.signal(signal.SIGINT, exit_handler)  
@@ -78,12 +70,10 @@ def main():
 
     print(Fore.CYAN + f"Searching for an available {length}-character username...\n")
 
-    
     with requests.Session() as session:
         while True:
             username = generate_username(length)
             print(Fore.YELLOW + f"Generated username: {username}")
-            
             
             available = check_username(session, username)  
             
