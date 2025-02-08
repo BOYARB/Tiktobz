@@ -16,7 +16,7 @@ print(Fore.YELLOW + r"""
    |_|  |_|_|\_\__\___/|_.__/___|
                                     
 """)
-print(Fore.CYAN + "Find a rare name on TikTok🫰️")
+print(Fore.CYAN + "Find a rare name on TikTok🫰️ ")
 print(Fore.MAGENTA + "Made by BOYARB❤️ \n")
 
 def check_username(session, username):
