@@ -52,17 +52,17 @@ def generate_username(length):
 
 
 def signal_handler(sig, frame):
-    print()  # Add a blank line before "Stopped"
-    print("\033[97mStopped")  # Display "Stopped" in white
+    print()  
+    print("\033[97mStopped")  
     sys.exit(0)
 
-# Handle Ctrl+C press to exit silently
-def exit_handler(sig, frame):
-    sys.exit(0)  # Exit silently without any message
 
-# Register the signal handlers
-signal.signal(signal.SIGTSTP, signal_handler)  # For Ctrl+Z
-signal.signal(signal.SIGINT, exit_handler)  # For Ctrl+C
+def exit_handler(sig, frame):
+    sys.exit(0)  
+
+
+signal.signal(signal.SIGTSTP, signal_handler)  
+signal.signal(signal.SIGINT, exit_handler)  
 
 def main():
     print(Fore.GREEN + "Select username type:")
@@ -78,24 +78,24 @@ def main():
 
     print(Fore.CYAN + f"Searching for an available {length}-character username...\n")
 
-    # Create a session to optimize connection
+    
     with requests.Session() as session:
         while True:
             username = generate_username(length)
             print(Fore.YELLOW + f"Generated username: {username}")
             
-            # Wait for the server response before proceeding
-            available = check_username(session, username)  # Wait for the server to respond
             
-            if available:  # If the username is taken
+            available = check_username(session, username)  
+            
+            if available:  
                 print(Fore.RED + f"Username @{username} is taken. Trying a new one...")
-            elif available is False:  # If the username is available
+            elif available is False:  
                 print(Fore.GREEN + f"Username @{username} is available for use!")
                 print(Fore.CYAN + "Search completed! Username found that is not in use.")
-                break  # Stop after finding an available username
+                break  
             else:
                 print(Fore.RED + "There was an issue checking the username. Retrying...")
-                continue  # Retry if there's an issue (like network errors)
+                continue  
 
 if __name__ == "__main__":
     main() 
