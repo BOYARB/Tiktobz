@@ -41,7 +41,6 @@ def check_username(session, username):
         return None  
 
 def generate_username(length):
-    
     characters = string.ascii_lowercase + string.ascii_uppercase + string.digits + "._"
     return ''.join(random.choices(characters, k=length))  
 
@@ -58,15 +57,18 @@ signal.signal(signal.SIGINT, exit_handler)
 
 def main():
     print(Fore.GREEN + "Select username type:")
-    choice = input(Fore.YELLOW + "Do you want a 3-character or 4-character username? (3/4): ")
+    
+    while True:
+        choice = input(Fore.YELLOW + "Do you want a 3-character or 4-character username? (3/4): ")
 
-    if choice == '3':
-        length = 3
-    elif choice == '4':
-        length = 4
-    else:
-        print(Fore.RED + "Invalid choice. Please choose 3 or 4.")
-        return
+        if choice == '3':
+            length = 3
+            break
+        elif choice == '4':
+            length = 4
+            break
+        else:
+            print(Fore.RED + "Invalid choice. Please choose 3 or 4.")
 
     print(Fore.CYAN + f"Searching for an available {length}-character username...\n")
 
